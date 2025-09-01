@@ -1,0 +1,30 @@
+services:
+  flask_app:
+    build:
+      context: ./flask_app  # Build context points to the Flask app directory
+      dockerfile: Dockerfile  # Use the Dockerfile in the app directory
+    container_name: flask_app  # Container name for easy identification
+    environment:
+      - FLASK_DEBUG=production  # Set Flask environment to development = 0, production = production
+    ports:
+      - "5000:5000"  # Expose Flask's port 5000 on the host
+    volumes:
+      - ./flask_app:/app  # Mount the app directory for development flexibility
+    restart: always  # Automatically restart the container on failure
+
+  nginx:
+    image: nginx:latest  # Use the latest Nginx image
+    container_name: nginx  # Assign a container name
+    ports:
+      - "8081:80"  # Map port 80 inside the container to 8081 on the host
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro  # Mount custom Nginx config
+    depends_on:
+      - flask_app  # Ensure Nginx waits for Flask to start
+    restart: always
+
+# because we use inference from Food101 FastAPI serving
+networks:
+  default:
+    external: true
+    name: shared_network

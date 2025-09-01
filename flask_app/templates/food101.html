@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Computer Vision Inference</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        img { max-width: 100%; border: 2px solid #ddd; margin: 10px 0; }
+        .predictions { margin-top: 20px; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Food101 Computer Vision Inference</h2>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit">Run Inference</button>
+        </form>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if result_image %}
+            <h3>Result Image</h3>
+            <img src="{{ result_image }}" alt="Inference Result">
+        {% endif %}
+
+        {% if predictions %}
+            <div class="predictions">
+                <h3>Predictions</h3>
+                <ul>
+                    {% for pred in predictions %}
+                        <li>{{ pred['class'] }} - {{ (pred['prob'] * 100) | round(2) }}%</li>
+                    {% endfor %}
+                </ul>
+                <p><strong>Latency:</strong> {{ latency }} ms</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

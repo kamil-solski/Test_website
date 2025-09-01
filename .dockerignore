@@ -1,0 +1,52 @@
+# Ignore Python cache & compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environments
+.venv/
+venv/
+env/
+
+# Ignore build/test/IDE artifacts
+*.egg-info/
+.eggs/
+*.egg
+dist/
+build/
+.coverage
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Ignore version control
+.git
+.gitignore
+.gitattributes
+
+# Ignore Docker & Compose files (no need to copy inside the image)
+docker-compose.yml
+.dockerignore
+Dockerfile
+
+# Ignore logs
+*.log
+logs/
+log/
+
+# Ignore local config/secrets
+.env
+*.env
+.env.*
+
+# Ignore editor/IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore data & uploads (mounted separately if needed)
+uploads/
+data/
+tmp/

@@ -1,0 +1,6 @@
+flask==2.2.5
+opencv-python
+numpy
+flask-wtf
+requests
+gunicorn
