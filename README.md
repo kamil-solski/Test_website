@@ -23,7 +23,7 @@ Project structure:
 
 3) usage:
 * to access food101 inference enter:
-localhost:5000/food101
+localhost:5002/food101
 
 * 
 

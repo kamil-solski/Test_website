@@ -7,7 +7,7 @@ services:
     environment:
       - FLASK_DEBUG=production  # Set Flask environment to development = 0, production = production
     ports:
-      - "5000:5000"  # Expose Flask's port 5000 on the host
+      - "5002:5000"  # Expose Flask's port 5002 on the host (because in Food101_MLOps we already use 5000 port for mlflow host)
     volumes:
       - ./flask_app:/app  # Mount the app directory for development flexibility
     restart: always  # Automatically restart the container on failure
